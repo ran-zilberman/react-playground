@@ -3,7 +3,7 @@ var path = require('path');
 
 var BUILD_DIR = path.resolve(__dirname, 'dist');
 var SRC_DIR = path.resolve(__dirname, 'src');
-var APP_COMPONENT_LOCATION = path.resolve(__dirname, 'src/components/app');
+var APP_COMPONENT_LOCATION = path.resolve(__dirname, 'src');
 
 var config = {
   entry: {
@@ -17,7 +17,16 @@ var config = {
   module : {
     loaders : [
       {
-        test : /\.jsx?/,
+        test: /\.json$/,
+        loaders:['json-loader']
+      },
+      //{
+      //  test : /\.jsx$/,
+      //  include : SRC_DIR,
+      //  loader : 'babel'
+      //},
+      {
+        test : /\.js?/,
         include : SRC_DIR,
         loader : 'babel'
       },
@@ -26,6 +35,12 @@ var config = {
         loader: "file?name=[name].[ext]"
       }
     ]
+  },
+  node: {
+    //console: 'empty',
+    fs: 'empty',
+    net: 'empty',
+    tls: 'empty'
   }
 };
 
