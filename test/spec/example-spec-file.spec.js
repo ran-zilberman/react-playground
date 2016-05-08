@@ -1,6 +1,6 @@
-describe('example-spec-file', function () {
+describe('example-spec-file', () => {
 
-  it('example test', function () {
+  it('example test',  () => {
     console.log('Hello test!!!');
   });
 
