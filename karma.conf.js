@@ -1,6 +1,3 @@
-var webpackConfig = require('./webpack.config');
-webpackConfig.devtool = 'inline-source-map';
-
 module.exports = function (config) {
   config.set({
     browsers: [ 'PhantomJS' ], //run in PhantomJS
@@ -9,14 +6,17 @@ module.exports = function (config) {
     files: [
       'test/**/*.js'
     ],
-    plugins: ['karma-phantomjs-launcher', 'karma-webpack', 'karma-sourcemap-loader', 'karma-jasmine'],
+    plugins: ['karma-phantomjs-launcher', 'karma-sourcemap-loader', 'karma-jasmine', 'karma-webpack'],
     preprocessors: {
       'test/**/*.js': [ 'webpack', 'sourcemap' ] //preprocess with webpack and our sourcemap loader
     },
     reporters: [ 'dots' ], //report results in this format
-    webpack: webpackConfig,
+    webpack: require('./webpack.test.config'),
     webpackServer: {
       noInfo: true //please don't spam the console when running in karma!
+    },
+    webpackMiddleware: {
+      noInfo: true
     }
   });
 };
