@@ -14,6 +14,9 @@ var config = {
     path: BUILD_DIR,
     filename: 'bundle.js'
   },
+  devServer: {
+    outputPath: BUILD_DIR
+  },
   module : {
     loaders : [
       {

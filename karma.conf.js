@@ -1,3 +1,5 @@
+//var webpackConfig = require('./webpack.test.config');
+
 module.exports = function (config) {
   config.set({
     browsers: [ 'PhantomJS' ], //run in PhantomJS
@@ -11,7 +13,14 @@ module.exports = function (config) {
       'test/**/*.js': [ 'webpack', 'sourcemap' ] //preprocess with webpack and our sourcemap loader
     },
     reporters: [ 'dots' ], //report results in this format
-    webpack: require('./webpack.test.config'),
+    webpack: {
+      devtool: 'inline-source-map', //just do inline source maps instead of the default
+      module: {
+        loaders: [
+          { test: /\.js$/, loader: 'babel-loader' }
+        ]
+      }
+    },
     webpackServer: {
       noInfo: true //please don't spam the console when running in karma!
     },
