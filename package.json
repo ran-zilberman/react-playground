@@ -5,9 +5,10 @@
   "main": "index.js",
   "scripts": {
     "test": "karma start --single-run=false",
-    "dev": "webpack -d --watch",
+    "dev": "webpack-dev-server --content-base dist",
     "build": "webpack -p",
-    "start": "npm run build && webpack-dev-server --content-base dist"
+    "server": "nodemon ./src/server-src/server.js",
+    "start": "npm run build &  npm run dev & npm run server"
   },
   "repository": {
     "type": "git",
@@ -33,9 +34,12 @@
     "redux": "^3.5.2",
     "redux-thunk": "^2.0.1",
     "request": "^2.65.0",
-    "webpack": "^1.13.0"
+    "webpack": "^1.13.0",
+    "yahoo-finance": "^0.2.12"
   },
   "devDependencies": {
+    "cors": "^2.7.1",
+    "express": "^4.13.4",
     "file-loader": "^0.8.5",
     "jasmine-core": "^2.4.1",
     "karma": "^0.13.3",
@@ -44,6 +48,7 @@
     "karma-phantomjs-launcher": "^1.0.0",
     "karma-sourcemap-loader": "^0.3.7",
     "karma-webpack": "^1.7.0",
+    "nodemon": "^1.9.2",
     "phantomjs-prebuilt": "^2.1.7",
     "webpack-dev-server": "^1.14.1"
   }

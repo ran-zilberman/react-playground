@@ -12,16 +12,13 @@ export function fetchStock(stockSymbol) {
     });
 
     let options = {
-      url: `http://localhost:1337/nasdaq.com/symbol/${stockSymbol}/historical` ,
-      headers: {
-        'Access-Control-Allow-Origin': 'http://localhost'
-      }
+      url: `http://localhost:3000/getStockHistoricalData`
     };
 
     request.get(options, (error, response, body) => {
       if (!error && response.statusCode === 200) {
-        var $ = cheerio.load(body);
-        console.log(body); // Show the HTML for the Modulus homepage.
+        let json = JSON.parse(response.body);
+        console.log(json); // Show the HTML for the Modulus homepage.
 
         dispatch({
           type: STOCK_DATA_FETCHED

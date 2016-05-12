@@ -4,7 +4,7 @@ var CopyWebpackPlugin = require('copy-webpack-plugin');
 var path = require('path');
 
 var BUILD_DIR = path.resolve(__dirname, 'dist');
-var SRC_DIR = path.resolve(__dirname, 'src');
+var SRC_DIR = path.resolve(__dirname, 'src/client-src');
 
 var config = {
   entry: {
@@ -15,7 +15,8 @@ var config = {
     filename: 'bundle.js'
   },
   devServer: {
-    outputPath: BUILD_DIR
+    outputPath: BUILD_DIR,
+    hot: true
   },
   module : {
     loaders : [
