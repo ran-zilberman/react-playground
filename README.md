@@ -11,6 +11,6 @@ Tool for stocks technical analysis
 ### Run 
 
 1.  Run "npm start"
-2.  Open you browser with  [this link][http://localhost:8080/index.html]
+2.  Open you browser with  [http://localhost:8080/index.html](http://localhost:8080/index.html)
 
 
