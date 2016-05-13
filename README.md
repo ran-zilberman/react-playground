@@ -8,7 +8,7 @@ Tool for stocks technical analysis.
 3.  Run "npm run install-db" to create a local couch db instance
 
 
-### Run 
+### Run
 
 1.  Run "npm start" to get the app up and running. 
 2.  Open another bash console and Run "npm run start-db" to have the db accesible.
