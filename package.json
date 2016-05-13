@@ -4,6 +4,8 @@
   "description": "Tool for stocks technical analysis",
   "main": "index.js",
   "scripts": {
+    "install-db": "./bin/install-db.sh",
+    "start-db": "./bin/start-db.sh",
     "test": "karma start --single-run=false",
     "dev": "webpack-dev-server --content-base dist",
     "build": "webpack -p",
