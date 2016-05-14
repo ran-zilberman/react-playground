@@ -42,7 +42,6 @@ var config = {
   },
   plugins: [
     new CopyWebpackPlugin([
-        // {output}/file.txt
           { from: SRC_DIR + "/index.html" }
         ]),
     new webpack.DefinePlugin({
@@ -52,7 +51,6 @@ var config = {
     })
   ],
   node: {
-    //console: 'empty',
     fs: 'empty',
     net: 'empty',
     tls: 'empty'
