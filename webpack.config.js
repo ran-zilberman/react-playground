@@ -44,7 +44,12 @@ var config = {
     new CopyWebpackPlugin([
         // {output}/file.txt
           { from: SRC_DIR + "/index.html" }
-        ])
+        ]),
+    new webpack.DefinePlugin({
+      'process.env': {
+        NODE_ENV: JSON.stringify('production')
+      }
+    })
   ],
   node: {
     //console: 'empty',

@@ -7,10 +7,9 @@
     "install-db": "./bin/install-db.sh",
     "start-db": "./bin/start-db.sh",
     "test": "karma start --single-run=false",
-    "dev": "webpack-dev-server --content-base dist",
     "build": "webpack -p",
     "server": "nodemon ./src/server-src/server.js",
-    "start": "npm run build &  npm run dev & npm run server"
+    "start": "npm run build & npm run server"
   },
   "repository": {
     "type": "git",
