@@ -1,6 +1,6 @@
-import {fetchStock} from '../actions/SearchStocksDlg.js';
+import {fetchStock} from '../../actions/SearchStocksDlg.js';
 import { connect } from 'react-redux';
-import SearchStocksDlg from '../components/SearchStocksDlg.jsx';
+import SearchStocksDlg from '../../components/SearchStocksDlg';
 
 
 const mapStateToProps = (state) => {
@@ -17,9 +17,9 @@ const mapDispatchToProps = (dispatch) => {
   }
 };
 
-const SearchStockDlgContainer = connect(
+const SearchStocksDlgContainer = connect(
   mapStateToProps,
   mapDispatchToProps
 )(SearchStocksDlg);
 
-export default SearchStockDlgContainer;
+export default SearchStocksDlgContainer;

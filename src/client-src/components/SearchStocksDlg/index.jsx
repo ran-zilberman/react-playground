@@ -6,8 +6,6 @@ const SearchStocksDlg = ({onSearchClick}) => (
 
 SearchStocksDlg.propTypes = {
   onSearchClick: PropTypes.func.isRequired
-  //completed: PropTypes.bool.isRequired,
-  //text: PropTypes.string.isRequired
 };
 
 

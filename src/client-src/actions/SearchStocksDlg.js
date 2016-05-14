@@ -1,5 +1,4 @@
 import request from 'request';
-import cheerio from 'cheerio';
 
 export const STOCK_SEARCH_IN_PROGRESS = 'STOCK_DATA_FETCHED';
 export const STOCK_DATA_FETCHED = 'STOCK_DATA_FETCHED';

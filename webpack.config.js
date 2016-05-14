@@ -7,6 +7,7 @@ var BUILD_DIR = path.resolve(__dirname, 'dist');
 var SRC_DIR = path.resolve(__dirname, 'src/client-src');
 
 var config = {
+  devtool: 'source-map',
   entry: {
     javascript: SRC_DIR + '/index.jsx'
   },
@@ -25,8 +26,9 @@ var config = {
         loaders:['json-loader']
       },
       {
-        test : /\.js?/,
+        test : /\.jsx?$/,
         include : SRC_DIR,
+        exclude: /node_modules/,
         loader : 'babel'
       },
       {
@@ -34,6 +36,9 @@ var config = {
         loader: "file?name=[name].[ext]"
       }
     ]
+  },
+  resolve: {
+    extensions: ['', '.js', '.jsx']
   },
   plugins: [
     new CopyWebpackPlugin([
