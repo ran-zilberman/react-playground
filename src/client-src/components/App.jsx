@@ -1,8 +1,8 @@
 import React from 'react'
-import SearchStocksDlgContainer from '../containers/SearchStocksDlgContainer'
+import CreateModelDlgContainer from '../containers/CreateModelDlgContainer'
 
 const App = () => (
-  <SearchStocksDlgContainer/>
+  <CreateModelDlgContainer/>
 );
 
 export default App;

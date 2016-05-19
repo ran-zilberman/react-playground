@@ -8,9 +8,10 @@ var SRC_DIR = path.resolve(__dirname, 'src/client-src');
 
 var config = {
   devtool: 'source-map',
-  entry: {
-    javascript: SRC_DIR + '/index.jsx'
-  },
+  entry: [
+    'babel-polyfill',
+    SRC_DIR + '/index.jsx'
+  ],
   output: {
     path: BUILD_DIR,
     filename: 'bundle.js'
