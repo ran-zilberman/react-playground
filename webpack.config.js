@@ -1,5 +1,7 @@
 var webpack = require('webpack');
 var CopyWebpackPlugin = require('copy-webpack-plugin');
+var ExtractTextPlugin = require('extract-text-webpack-plugin');
+
 
 var path = require('path');
 
@@ -35,6 +37,10 @@ var config = {
       {
         test: /\.html$/,
         loader: "file?name=[name].[ext]"
+      },
+      {
+        test: /\.scss$/,
+        loader: ExtractTextPlugin.extract('css!sass')
       }
     ]
   },
@@ -49,6 +55,9 @@ var config = {
       'process.env': {
         NODE_ENV: JSON.stringify('production')
       }
+    }),
+    new ExtractTextPlugin('style.css', {
+      allChunks: true
     })
   ],
   node: {

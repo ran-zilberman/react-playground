@@ -5,10 +5,12 @@ var Index = React.createClass({
 render: function() {
 
 var bundleScript = this.props.bundleScript || "bundle.js";
+var styleScript = this.props.styleScript || "style.css";
 
 return (
 <html>
 <head>
+  <link rel="stylesheet" type="text/css" href={ styleScript } />
 </head>
 <body>
 <div id="app"></div>
