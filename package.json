@@ -4,10 +4,11 @@
   "description": "Tool for stocks technical analysis",
   "main": "index.js",
   "scripts": {
+    "clean": "rimraf dist",
     "install-db": "./bin/install-db.sh",
     "start-db": "./bin/start-db.sh",
     "test": "karma start --single-run=false",
-    "build": "webpack -d",
+    "build": "webpack",
     "server": "nodemon ./src/server-src/server.js",
     "start": "npm run build & npm run server"
   },
