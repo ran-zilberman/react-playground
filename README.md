@@ -12,7 +12,7 @@ Tool for stocks technical analysis.
 
 1.  Run "npm start" to get the app up and running. 
 2.  Open another bash console and Run "npm run start-db" to have the db accesible.
-3.  Open a browser with  [http://localhost:8080/index.html](http://localhost:8080/index.html)
+3.  Open a browser with  [http://localhost:3000/index.html](http://localhost:3000/index.html)
 4.  Now get to work!!!!
 
 
