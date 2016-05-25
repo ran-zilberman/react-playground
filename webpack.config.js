@@ -1,8 +1,6 @@
 var webpack = require('webpack');
 var CopyWebpackPlugin = require('copy-webpack-plugin');
 var ExtractTextPlugin = require('extract-text-webpack-plugin');
-
-
 var path = require('path');
 
 var BUILD_DIR = path.resolve(__dirname, 'dist');
@@ -23,6 +21,7 @@ var config = {
     hot: true
   },
   module : {
+    noParse: /node_modules\/json-schema\/lib\/validate\.js/,
     loaders : [
       {
         test: /\.json$/,

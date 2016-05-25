@@ -1,10 +1,12 @@
 import request from 'request';
+import * as ActionTypes from '../constants/ActionTypes/CreateModelDlg'
 
-export const BEGIN_CREATE_FINANCIAL_MODEL_REQUEST = 'BEGIN_CREATE_FINANCIAL_MODEL_REQUEST';
-
-let createModel = ({modelName}) => ({type:BEGIN_CREATE_FINANCIAL_MODEL_REQUEST, modelName});
+let createModel = ({modelName}) => ({type:ActionTypes.CREATE_MODEL, modelName});
+let showLoader = () => ({type: ActionTypes.SHOW_LOADER});
+let closeLoader = () => ({type: ActionTypes.CLOSE_LOADER});
 
 export default {
-  BEGIN_CREATE_FINANCIAL_MODEL_REQUEST,
-  createModel
+  createModel,
+  showLoader,
+  closeLoader
 };

@@ -16,9 +16,26 @@ module.exports = function (config) {
     webpack: {
       devtool: 'inline-source-map', //just do inline source maps instead of the default
       module: {
+        noParse: /node_modules\/json-schema\/lib\/validate\.js/,
         loaders: [
-          { test: /\.js$/, loader: 'babel-loader' }
+          {test: /\.json$/, loaders:['json-loader'] },
+          { test: /\.jsx?$/, loader: 'babel', exclude: /node_modules/ }
         ]
+      },
+      resolve: {
+        extensions: ['', '.js', '.jsx']
+      },
+      externals: {
+        'cheerio': 'window',
+        'jsdom': 'window',
+        'react/lib/ReactContext': true,
+        'react/lib/ExecutionEnvironment': true,
+        'react/addons': true
+      },
+      node: {
+        fs: 'empty',
+        net: 'empty',
+        tls: 'empty'
       }
     },
     webpackServer: {

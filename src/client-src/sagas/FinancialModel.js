@@ -4,18 +4,20 @@
 import { call, put, take } from 'redux-saga/effects';
 import { takeEvery } from 'redux-saga';
 import ServerApiClient from '../client/ServerApiClient.js';
+import actions from '../actions/CreateModelDlg'
+import * as ActionTypes from '../constants/ActionTypes/CreateModelDlg'
 
 function* createFinancialModel(action) {
-  yield put({ type: 'SHOW_WAITING_MODAL' });
+  yield put(actions.showLoader());
   try {
     const response = yield call(() => ServerApiClient.createModel(action.modelName));
   } catch (e) {
     // trigger popup action
   }
-  yield put({ type: 'CLOSE_WAITING_MODAL' });
+  yield put(actions.closeLoader());
 }
 
 export function* watchCreateFinancialModel() {
-  yield* takeEvery('BEGIN_CREATE_FINANCIAL_MODEL_REQUEST', createFinancialModel)
+  yield* takeEvery(ActionTypes.CREATE_MODEL, createFinancialModel)
 }
 
