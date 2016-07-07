@@ -13,17 +13,25 @@ const createPostOptions = (payload) => {
   };
 };
 
+// let oldFetch = fetch;
+//
+// fetch = (...args) => {
+//   oldFetch(args).
+// };
+
 class ServerApiClient {
 
   createModel(modelName) {
     let options = createPostOptions({modelName: modelName});
 
-    return fetch(`saveFinancialModel`, options, (error, response) => {
-      if (!error && response.statusCode === 200) {
+    return fetch(`saveFinancialModel`, options).then((response) => {
+      if (response.statusCode === 200) {
         return;
       } else {
         throw new Error("Failed to save model: " + modelName);
       }
+    }).catch((error) => {
+      throw new Error("Failed to save model: " + modelName + '. error: ' + error);
     });
   }
 }

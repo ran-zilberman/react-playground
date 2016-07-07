@@ -9,7 +9,6 @@ class CreateModelDlg extends Component {
   }
 
   render() {
-    let {value} = this.props;
     return (<div>
       <input ref="modelName" onKeyPress={ this._onKeyPress } />
       <button onClick={ this._onClick }>Create new Model</button>
