@@ -4,27 +4,44 @@ class BoDomainServicesPane extends Component {
 
   constructor(params) {
     super(params);
-    this._onClick = this._onClick.bind(this);
-    this._onKeyPress = this._onKeyPress.bind(this);
+    this._onDomainGetClick = this._onDomainGetClick.bind(this);
+    this._onDomainTransferGetClick = this._onDomainTransferGetClick.bind(this);
+    this._onRegistryCheckClick = this._onRegistryCheckClick.bind(this);
+    this._onPremiumDomainDataClick = this._onPremiumDomainDataClick.bind(this);
   }
 
   render() {
     return (<div>
-      <input ref="modelName" onKeyPress={ this._onKeyPress } />
-      <button onClick={ this._onClick }>Create new Model</button>
+      <input ref="domainName" />
+      <button onClick={ this._onDomainGetClick }>Domain Get</button>
+      <button onClick={ this._onDomainTransferGetClick }>Domain Transfer Get</button>
+      <button onClick={ this._onRegistryCheckClick }>Domain Transfer Get</button>
+      <button onClick={ this._onPremiumDomainDataClick }>Premium domain data</button>
     </div>);
   }
 
-  _onClick() {
-    let {onCreateModelClick} = this.props;
-    let val = this.refs.modelName.value;
-    onCreateModelClick(this.refs.modelName.value);
+  _onDomainGetClick() {
+    let {onDomainGetClick} = this.props;
+    let domainName = this.refs.domainName.value;
+    onDomainGetClick(domainName);
   }
 
-  _onKeyPress(event) {
-    if(event.which == 13){
-      this._onClick();
-    }
+  _onDomainTransferGetClick() {
+    let {onDomainTransferGetClick} = this.props;
+    let domainName = this.refs.domainName.value;
+    onDomainTransferGetClick(domainName);
+  }
+
+  _onRegistryCheckClick() {
+    let {onRegistryCheckClick} = this.props;
+    let domainName = this.refs.domainName.value;
+    onRegistryCheckClick(domainName);
+  }
+
+  _onPremiumDomainDataClick() {
+    let {onPremiumDomainDataClick} = this.props;
+    let domainName = this.refs.domainName.value;
+    onPremiumDomainDataClick(domainName);
   }
 
 }
@@ -33,9 +50,11 @@ BoDomainServicesPane.displayName = 'BoDomainServicesPane';
 
 BoDomainServicesPane.propTypes = {
   onDomainGetClick: PropTypes.func.isRequired,
-  onDomainTransferGetClick: PropTypes.func.isRequired
+  onDomainTransferGetClick: PropTypes.func.isRequired,
+  onRegistryCheckClick: PropTypes.func.isRequired,
+  onPremiumDomainDataClick: PropTypes.func.isRequired
 };
 
 
-export default CreateModelDlg;
+export default BoDomainServicesPane;
 
