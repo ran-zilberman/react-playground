@@ -1,4 +1,4 @@
-import * as ActionTypes from '../constants/ActionTypes/CreateModelDlg'
+import * as ActionTypes from '../constants/ActionTypes/create-model-dlg'
 
 const initialState = {};
 const copyState = (state) => (JSON.parse(JSON.stringify(state)));

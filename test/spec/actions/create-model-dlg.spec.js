@@ -1,5 +1,5 @@
 import Actions from '../../../src/client-src/actions';
-import * as ActionTypes from '../../../src/client-src/constants/ActionTypes/CreateModelDlg';
+import * as ActionTypes from '../../../src/client-src/constants/ActionTypes/create-model-dlg';
 
 describe('Actions: CreateModelDlg', function () {
 

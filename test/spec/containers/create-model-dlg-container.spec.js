@@ -2,7 +2,7 @@ import { mount, shallow } from 'enzyme';
 import React from 'react';
 import {Provider} from 'react-redux';
 import CreateModelDlgContainer from '../../../src/client-src/containers/CreateModelDlgContainer';
-import configureStore from '../../../src/client-src/store/configureStore';
+import configureStore from '../../../src/client-src/store/configure-store';
 import Actions from '../../../src/client-src/actions';
 
 

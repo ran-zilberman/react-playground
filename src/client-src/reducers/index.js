@@ -1,5 +1,5 @@
 import {combineReducers} from 'redux';
-import CreateModelDlg from './CreateModelDlg.js';
+import CreateModelDlg from './create-model-dlg.js';
 
 const rootReducer = combineReducers({CreateModelDlg});
 

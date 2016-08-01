@@ -4,8 +4,8 @@
 import { call, put, take } from 'redux-saga/effects';
 import { takeEvery } from 'redux-saga';
 import ServerApiClient from '../client/ServerApiClient.js';
-import actions from '../actions/CreateModelDlg'
-import * as ActionTypes from '../constants/ActionTypes/CreateModelDlg'
+import actions from '../actions/bo-domain-services-pane'
+import * as ActionTypes from '../constants/ActionTypes/create-model-dlg'
 
 function* createFinancialModel(action) {
   yield put(actions.showLoader());
