@@ -2,7 +2,7 @@ import reducer from '../../../src/client-src/reducers/bo-domain-services-pane';
 import BoDomainServicesPaneActions from '../../../src/client-src/actions/bo-domain-services-pane';
 
 
-describe('Reducers: CreateModelDlg', function () {
+describe('Reducers: bo-domain-services-pane', function () {
 
   it('should return the initial state', () => {
     expect(reducer(undefined, {type: 'UNKNOWN'})).toEqual({});
