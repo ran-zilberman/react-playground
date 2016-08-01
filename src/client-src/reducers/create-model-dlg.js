@@ -1,10 +1,9 @@
 import * as ActionTypes from '../constants/ActionTypes/create-model-dlg'
 
 const initialState = {};
-const copyState = (state) => (JSON.parse(JSON.stringify(state)));
 
 export default function createModelDlg(state = initialState, action) {
-  let newState = copyState(state);
+  let newState = Object.assign({}, state);
   switch (action.type) {
     case ActionTypes.SHOW_LOADER:
       newState.loader = true;

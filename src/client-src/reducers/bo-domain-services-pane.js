@@ -1,10 +1,9 @@
 import * as BoDomainServicesPaneActionTypes from '../constants/ActionTypes/bo-domain-services-pane'
 
 const initialState = {};
-const copyState = (state) => (JSON.parse(JSON.stringify(state)));
 
-export default function createModelDlg(state = initialState, action) {
-  let newState = copyState(state);
+export default function boDomainServicesPane(state = initialState, action) {
+  let newState = Object.assign({}, state);
   switch (action.type) {
     case BoDomainServicesPaneActionTypes.SHOW_LOADER:
       newState.loader = true;
