@@ -13,12 +13,6 @@ const createPostOptions = (payload) => {
   };
 };
 
-// let oldFetch = fetch;
-//
-// fetch = (...args) => {
-//   oldFetch(args).
-// };
-
 class ServerApiClient {
 
   createModel(modelName) {
@@ -34,6 +28,11 @@ class ServerApiClient {
       throw new Error("Failed to save model: " + modelName + '. error: ' + error);
     });
   }
+
+  getDomainData(domainName) {}
+  getDomainTransferData(domainName) {}
+  getRegistryCheckData(domainName) {}
+  getPremiumDomainData(domainName) {}
 }
 
 export default new ServerApiClient();

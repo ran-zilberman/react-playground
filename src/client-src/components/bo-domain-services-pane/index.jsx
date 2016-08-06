@@ -13,10 +13,10 @@ class BoDomainServicesPane extends Component {
   render() {
     return (<div>
       <input ref="domainName" />
-      <button onClick={ this._onDomainGetClick }>Domain Get</button>
-      <button onClick={ this._onDomainTransferGetClick }>Domain Transfer Get</button>
-      <button onClick={ this._onRegistryCheckClick }>Domain Transfer Get</button>
-      <button onClick={ this._onPremiumDomainDataClick }>Premium domain data</button>
+      <button className="domain-get-button" onClick={ this._onDomainGetClick }>Domain Get</button>
+      <button className="domain-transfer-get-button" onClick={ this._onDomainTransferGetClick }>Domain Transfer Get</button>
+      <button className="registry-check-button" onClick={ this._onRegistryCheckClick }>Domain Transfer Get</button>
+      <button className="premium-domain-data-button" onClick={ this._onPremiumDomainDataClick }>Premium domain data</button>
     </div>);
   }
 

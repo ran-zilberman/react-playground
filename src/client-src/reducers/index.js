@@ -1,6 +1,6 @@
 import {combineReducers} from 'redux';
-import CreateModelDlg from './create-model-dlg.js';
+import BoDomainServicesPane from './bo-domain-services-pane';
 
-const rootReducer = combineReducers({CreateModelDlg});
+const rootReducer = combineReducers({BoDomainServicesPane});
 
 export default rootReducer;

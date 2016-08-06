@@ -46,6 +46,7 @@
     "yahoo-finance": "^0.2.12"
   },
   "devDependencies": {
+    "babel-plugin-react-html-attrs": "^2.0.0",
     "cors": "^2.7.1",
     "css-loader": "^0.23.1",
     "enzyme": "^2.3.0",
@@ -55,11 +56,13 @@
     "jasmine-core": "^2.4.1",
     "karma": "^0.13.3",
     "karma-chrome-launcher": "^0.2.0",
+    "karma-es6-shim": "^1.0.0",
     "karma-jasmine": "^0.3.6",
     "karma-phantomjs-launcher": "^1.0.0",
     "karma-sourcemap-loader": "^0.3.7",
     "karma-webpack": "^1.7.0",
     "nodemon": "^1.9.2",
+    "phantomjs-polyfill-object-assign": "0.0.2",
     "phantomjs-prebuilt": "^2.1.7",
     "react-addons-test-utils": "^15.0.0-rc.2",
     "sass-loader": "^3.2.0",

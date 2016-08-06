@@ -6,7 +6,8 @@ module.exports = function (config) {
     singleRun: true, //just run once by default
     frameworks: [ 'jasmine' ], //use the jasmine test framework
     files: [
-      'test/**/*.js'
+      'test/**/*.js',
+      './node_modules/phantomjs-polyfill-object-assign/object-assign-polyfill.js'
     ],
     plugins: ['karma-phantomjs-launcher', 'karma-sourcemap-loader', 'karma-jasmine', 'karma-webpack'],
     preprocessors: {
