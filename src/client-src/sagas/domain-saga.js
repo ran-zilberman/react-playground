@@ -43,8 +43,10 @@ const waiter = (EVENT, handler) => function*() {
     yield* takeEvery(EVENT, handler);
 };
 
-const waitForDomainGet = waiter(ActionTypes.DOMAIN_GET, domainGet);
-const waitForDomainTransferGet = waiter(ActionTypes.DOMAIN_TRANSFER_GET, domainTransferGet);
+const waitForGetDomainData = waiter(ActionTypes.GET_DOMAIN_DATA, getDomainData);
+const waitForGetDomainTransferData = waiter(ActionTypes.GET_TRANSFER_DOMAIN_DATA, getDomainTransferData);
+const waitForGetDomainRegistryData = waiter(ActionTypes.GET_DOMAIN_REGISTRY_DATA, getRegistryCheckData);
+const waitForGetPremiumDomainData = waiter(ActionTypes.GET_PREMIUM_DOMAIN_DATA, getPremiumDomainData);
 
 // ============================================================================
 // DEFAULT SAGA EXPORT
@@ -52,6 +54,9 @@ const waitForDomainTransferGet = waiter(ActionTypes.DOMAIN_TRANSFER_GET, domainT
 
 export default function* domainRootSage() {
   yield [
-    fork(waitForDomainGet)
+    fork(waitForGetDomainData),
+    fork(waitForGetDomainTransferData),
+    fork(waitForGetDomainRegistryData),
+    fork(waitForGetPremiumDomainData)
   ];
 }

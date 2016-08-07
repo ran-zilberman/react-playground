@@ -25,9 +25,8 @@ describe('<BoDomainServicesPane/>', ()=> {
   });
 
   const simulateClickAndAssertCallback = (callbackSpy, buttonClass) => {
-    expect(callbackSpy.calls.count()).toBe(0);
     wrapper.find(buttonClass).simulate('click');
-    expect(callbackSpy.calls.count()).toBe(1);
+    expect(callbackSpy).toHaveBeenCalledTimes(1);
   };
 
   it('should trigger onDomainGetClick callback upon \'getDomainData\' button click', function () {
