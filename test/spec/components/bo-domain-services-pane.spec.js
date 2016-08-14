@@ -29,19 +29,19 @@ describe('<BoDomainServicesPane/>', ()=> {
     expect(callbackSpy).toHaveBeenCalledTimes(1);
   };
 
-  it('should trigger onDomainGetClick callback upon \'getDomainData\' button click', function () {
+  it(`should trigger onDomainGetClick callback upon 'getDomainData' button click`, function () {
     simulateClickAndAssertCallback(props.onDomainGetClick, getDomainDataClassName);
   });
 
-  it('should trigger onDomainTransferGetClick callback upon \'getDomainTransferData\' button click', function () {
+  it(`should trigger onDomainTransferGetClick callback upon 'getDomainTransferData' button click`, function () {
     simulateClickAndAssertCallback(props.onDomainTransferGetClick, getDomainTransferDataClassName);
   });
 
-  it('should trigger onRegistryCheckClick callback upon \'getDomainRegistryCheck\' button click', function () {
+  it(`should trigger onRegistryCheckClick callback upon 'getDomainRegistryCheck' button click`, function () {
     simulateClickAndAssertCallback(props.onRegistryCheckClick, getDomainRegistryCheckDataClassName);
   });
 
-  it('should trigger onPremiumDomainDataClick callback upon \'getPremiumDomainData\' button click', function () {
+  it(`should trigger onPremiumDomainDataClick callback upon 'getPremiumDomainData' button click`, function () {
     simulateClickAndAssertCallback(props.onPremiumDomainDataClick, getPremiumDomainDataClassName);
   });
 

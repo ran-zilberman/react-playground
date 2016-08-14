@@ -8,15 +8,15 @@ describe('Reducers: bo-domain-services-pane', function () {
     expect(reducer(undefined, {type: 'UNKNOWN'})).toEqual({});
   });
 
-  it('should set state\'s loader flag to true when SHOW_LOADER action is triggered', () => {
+  it(`should set state's loader flag to true when SHOW_LOADER action is triggered`, () => {
     expect(reducer(undefined, BoDomainServicesPaneActions.showLoader())).toEqual({loader: true});
   });
 
-  it('should remove state\'s loader flag when CLOSE_LOADER action is triggered', () => {
+  it(`should remove state's loader flag when CLOSE_LOADER action is triggered`, () => {
     expect(reducer(undefined, BoDomainServicesPaneActions.closeLoader())).toEqual({});
   });
 
-  it('should return the state as is when CLOSE_LOADER action is triggered and state\'s loader flag is not present', () => {
+  it(`should return the state as is when CLOSE_LOADER action is triggered and state's loader flag is not present`, () => {
     expect(reducer({loader: true}, BoDomainServicesPaneActions.closeLoader())).toEqual({});
   });
 
