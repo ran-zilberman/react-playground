@@ -1,7 +1,6 @@
-
 import { call, put, fork} from 'redux-saga/effects';
 import { takeEvery } from 'redux-saga';
-import ServerApiClient from '../client/ServerApiClient.js';
+import DomainServerApi from '../services/domain-server-api';
 import actions from '../actions/bo-domain-services-pane'
 import * as ActionTypes from '../constants/ActionTypes/bo-domain-services-pane'
 
@@ -9,7 +8,7 @@ import * as ActionTypes from '../constants/ActionTypes/bo-domain-services-pane'
 // SAGA TASKS
 // ============================================================================
 
-const executeDomainDataCall = function*(method, action) {
+const executeDomainDataCall = function *(method, action) {
   yield put(actions.showLoader());
   try {
     const response = yield call(() => method(action.domainName));
@@ -19,20 +18,20 @@ const executeDomainDataCall = function*(method, action) {
   yield put(actions.closeLoader());
 };
 
-const getDomainData = function*(action) {
-  executeDomainDataCall(ServerApiClient.getDomainData, action);
+const getDomainData = function* (action) {
+  yield executeDomainDataCall(DomainServerApi.getDomainData, action);
 };
 
-const getDomainTransferData = function*(action) {
-  executeDomainDataCall(ServerApiClient.getDomainTransferData, action);
+const getDomainTransferData = function* (action) {
+  yield executeDomainDataCall(DomainServerApi.getDomainTransferData, action);
 };
 
-const getRegistryCheckData = function*(action) {
-  executeServerCall(ServerApiClient.getRegistryCheckData, action);
+const getRegistryCheckData = function* (action) {
+  yield executeDomainDataCall(DomainServerApi.getRegistryCheckData, action);
 };
 
-const getPremiumDomainData = function*(action) {
-  executeDomainDataCall(ServerApiClient.getPremiumDomainData, action);
+const getPremiumDomainData = function* (action) {
+  yield executeDomainDataCall(DomainServerApi.getPremiumDomainData, action);
 };
 
 // ============================================================================

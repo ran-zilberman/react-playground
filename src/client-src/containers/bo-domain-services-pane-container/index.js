@@ -11,7 +11,7 @@ const mapStateToProps = (state) => {
 
 const createDomainActionCallback = (dispatch, action) => {
   return (domainName) => {
-    dispatch(action(domainName))
+    dispatch(action({domainName}))
   }
 };
 
