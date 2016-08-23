@@ -2,7 +2,7 @@ import { call, put, fork} from 'redux-saga/effects';
 import { takeEvery } from 'redux-saga';
 import DomainServerApi from '../services/domain-server-api';
 import actions from '../actions/bo-domain-services-pane'
-import * as ActionTypes from '../constants/ActionTypes/bo-domain-services-pane'
+import * as ActionTypes from '../constants/action-types/bo-domain-services-pane'
 
 // ============================================================================
 // SAGA TASKS

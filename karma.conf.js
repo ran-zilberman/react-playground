@@ -7,7 +7,9 @@ module.exports = function (config) {
     frameworks: [ 'jasmine' ], //use the jasmine test framework
     files: [
       'test/**/*.js',
-      './node_modules/phantomjs-polyfill-object-assign/object-assign-polyfill.js'
+      './node_modules/phantomjs-polyfill-object-assign/object-assign-polyfill.js',
+      './node_modules/es6-promise/dist/es6-promise.js',
+      './node_modules/promise-polyfill/promise.js'
     ],
     plugins: ['karma-phantomjs-launcher', 'karma-sourcemap-loader', 'karma-jasmine', 'karma-webpack'],
     preprocessors: {

@@ -2,50 +2,56 @@
  * Created by Ran_Zilberman on 17/05/2016.
  */
 
-const createPostOptions = (payload) => {
+import ContentType from '../constants/content-type';
+
+const createPostOptions = (payload, contentType) => {
   return {
     method: 'POST',
     headers: {
       'Accept': 'application/json',
-      'Content-Type': 'application/json'
+      'Content-Type': contentType
     },
     body: JSON.stringify(payload)
   };
 };
 
-const verifyStatusCodeOk = (response) => {
-  if (response.statusCode !== 200) {
-    throw new Error(`DomainServerApi: Status code is ${response.statusCode}`);
+const verifyStatusCodeOkOrThrow = (response) => {
+  if (!response.ok) {
+    throw new Error(`DomainServerApi request failed, response code ${response.status}`);
   }
 };
 
-const getServerResponse = async (uri, params) => {
-  const options = createPostOptions(params);
-  try {
-    let response = await fetch(uri, options);
-    verifyStatusCodeOk(response);
-    return response;
-  } catch(error) {
-    throw new Error(`DomainServerApi: Failed to get data from server when calling ${uri}: ${error}`);
+const extractData = (response) => {
+  if (response.headers.get('Content-Type') === ContentType.JSON_CONTENT_TYPE) {
+    return response.json();
+  } else {
+    return response.text();
   }
+};
+
+const getServerResponse = async (uri, params, contentType) => {
+  const options = createPostOptions(params, contentType);
+  let response = await fetch(uri, options);
+  verifyStatusCodeOkOrThrow(response);
+  return extractData(response);
 };
 
 class DomainServerApi {
 
   async getDomainData(domainName) {
-    return getServerResponse(`/bo/api/s3/domain/services/domainGet`, {domainName: domainName});
+    return getServerResponse(`/bo/api/s3/domain/services/domainGet`, {domainName: domainName}, ContentType.XML_CONTENT_TYPE);
   }
 
   async getDomainTransferData(domainName) {
-    return getServerResponse(`/bo/api/s3/domain/services/domainTransferGet`, {domainName: domainName});
+    return getServerResponse(`/bo/api/s3/domain/services/domainTransferGet`, {domainName: domainName}, ContentType.XML_CONTENT_TYPE);
   }
 
   async getRegistryCheckData(domainName) {
-    return getServerResponse(`/bo/api/s3/domain/services/registryCheck`, {domainName: domainName});
+    return getServerResponse(`/bo/api/s3/domain/services/registryCheck`, {domainName: domainName}, ContentType.XML_CONTENT_TYPE);
   }
 
   async getPremiumDomainData(domainName) {
-    return getServerResponse(`/bo/api/s3/domain/services/getWixDomain`, {domainName: domainName});
+    return getServerResponse(`/bo/api/s3/domain/services/getWixDomain`, {domainName: domainName}, ContentType.JSON_CONTENT_TYPE);
   }
 
 }

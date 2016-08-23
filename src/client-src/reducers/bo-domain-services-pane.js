@@ -1,4 +1,4 @@
-import * as BoDomainServicesPaneActionTypes from '../constants/ActionTypes/bo-domain-services-pane'
+import * as BoDomainServicesPaneActionTypes from '../constants/action-types/bo-domain-services-pane'
 
 const initialState = {};
 
