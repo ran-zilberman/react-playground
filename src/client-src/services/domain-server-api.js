@@ -2,7 +2,8 @@
  * Created by Ran_Zilberman on 17/05/2016.
  */
 
-import ContentType from '../constants/content-type';
+import ContentType from '../constants/ContentType';
+import ServerUri from '../constants/ServerUri';
 
 const createPostOptions = (payload, contentType) => {
   return {
@@ -39,19 +40,19 @@ const getServerResponse = async (uri, params, contentType) => {
 class DomainServerApi {
 
   async getDomainData(domainName) {
-    return getServerResponse(`/bo/api/s3/domain/services/domainGet`, {domainName: domainName}, ContentType.XML_CONTENT_TYPE);
+    return getServerResponse(ServerUri.GET_DOMAIN_DATA, {domainName: domainName}, ContentType.XML_CONTENT_TYPE);
   }
 
   async getDomainTransferData(domainName) {
-    return getServerResponse(`/bo/api/s3/domain/services/domainTransferGet`, {domainName: domainName}, ContentType.XML_CONTENT_TYPE);
+    return getServerResponse(ServerUri.GET_DOMAIN_TRANSFER_DATA, {domainName: domainName}, ContentType.XML_CONTENT_TYPE);
   }
 
   async getRegistryCheckData(domainName) {
-    return getServerResponse(`/bo/api/s3/domain/services/registryCheck`, {domainName: domainName}, ContentType.XML_CONTENT_TYPE);
+    return getServerResponse(ServerUri.GET_DOMAIN_REGISTRY_CHECK, {domainName: domainName}, ContentType.XML_CONTENT_TYPE);
   }
 
   async getPremiumDomainData(domainName) {
-    return getServerResponse(`/bo/api/s3/domain/services/getWixDomain`, {domainName: domainName}, ContentType.JSON_CONTENT_TYPE);
+    return getServerResponse(ServerUri.GET_PREMIUM_DOMAIN_DATA, {domainName: domainName}, ContentType.JSON_CONTENT_TYPE);
   }
 
 }

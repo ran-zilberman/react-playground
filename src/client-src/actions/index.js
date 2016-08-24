@@ -3,6 +3,5 @@
  */
 
 import BoDomainServicesPane from './bo-domain-services-pane';
-import CreateModelDlg from './create-model-dlg';
 
-export default {CreateModelDlg, BoDomainServicesPane};
+export default { BoDomainServicesPane };

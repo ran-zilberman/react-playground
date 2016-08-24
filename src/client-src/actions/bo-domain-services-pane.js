@@ -1,4 +1,4 @@
-import * as ActionTypes from '../constants/action-types/bo-domain-services-pane'
+import ActionTypes from '../constants/BoDomainServicesActionTypes'
 
 let getDomainData = ({domainName}) => ({type:ActionTypes.GET_DOMAIN_DATA, domainName});
 let getDomainTransferData = ({domainName}) => ({type:ActionTypes.GET_TRANSFER_DOMAIN_DATA, domainName});

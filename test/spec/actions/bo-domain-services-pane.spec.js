@@ -1,5 +1,5 @@
 import BoDomainServicesPaneActions from '../../../src/client-src/actions/bo-domain-services-pane';
-import * as ActionTypes from '../../../src/client-src/constants/action-types/bo-domain-services-pane';
+import ActionTypes from '../../../src/client-src/constants/BoDomainServicesActionTypes';
 
 describe('Actions: bo-domain-services-pane', function () {
   
