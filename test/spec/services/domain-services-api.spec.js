@@ -7,8 +7,11 @@ import ServerUri from '../../../src/client-src/constants/ServerUri'
 const dummyResultJsonObject = () => ({prop: 'value'});
 const dummyResultXmlObject = () => '<xmlFakeResponse><fakeItem>1</fakeItem></xmlFakeResponse>';
 const dummyXmlJsonRep = () => ({ xmlFakeResponse: { fakeItem: '1' } });
-
 const responseParams = (contentType, result) => ({ body: result, headers: { 'content-type': contentType } });
+
+// ============================================================================
+// Assertion helpers
+// ============================================================================
 
 const assertCatch = async (asyncMethod, errorMessage, done) => {
   try {
@@ -28,6 +31,10 @@ const assertApiSuccess = async (method, expectedResult) => {
   const result = await method();
   expect(result).toEqual(expectedResult);
 };
+
+// ============================================================================
+// Tests
+// ============================================================================
 
 describe('DomainServicesApi', () => {
 

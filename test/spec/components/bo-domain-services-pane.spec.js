@@ -2,7 +2,9 @@ import { mount, shallow } from 'enzyme';
 import React from 'react';
 import BoDomainServicesPane from '../../../src/client-src/components/bo-domain-services-pane';
 
-
+// ============================================================================
+// Tests
+// ============================================================================
 
 describe('<BoDomainServicesPane/>', ()=> {
 

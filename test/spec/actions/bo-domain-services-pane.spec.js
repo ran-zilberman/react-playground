@@ -1,6 +1,10 @@
 import BoDomainServicesPaneActions from '../../../src/client-src/actions/bo-domain-services-pane';
 import ActionTypes from '../../../src/client-src/constants/BoDomainServicesActionTypes';
 
+// ============================================================================
+// Tests
+// ============================================================================
+
 describe('Actions: bo-domain-services-pane', function () {
   
   it('should return GET_DOMAIN_DATA action object', function () {

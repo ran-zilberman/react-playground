@@ -1,6 +1,9 @@
 import reducer from '../../../src/client-src/reducers/bo-domain-services-pane';
 import BoDomainServicesPaneActions from '../../../src/client-src/actions/bo-domain-services-pane';
 
+// ============================================================================
+// Tests
+// ============================================================================
 
 describe('Reducers: bo-domain-services-pane', function () {
 
