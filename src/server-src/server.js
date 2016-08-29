@@ -70,7 +70,7 @@ app.post('/bo/api/s3/domain/services/registryCheck', (req, res) => {
 
 app.post('/bo/api/s3/domain/services/getWixDomain', (req, res) => {
   console.log('Server API: getPremiumDomainData');
-  res.header('Content-Type','text/xml');
+  res.header('Content-Type','application/json');
   let json = '{"wixUserGuid":"8dc319c5-9335-4fd0-9758-22f6d1bcb6af","registerDotComStatus":"Active","siteId":null,"mgmType":"DOMAIN_MGMT_REGISTRATION","domainExpirationDate":1496793600000,"hasPremiums":true,"nameserver1":"ns5.wixdns.net","nameserver2":"ns4.wixdns.net","wwwRecordCName":"www210.wixdns.net","published":false}';
   res.json(json);
 });

@@ -8,10 +8,10 @@ import ActionTypes from '../constants/BoDomainServicesActionTypes'
 // SAGA TASKS
 // ============================================================================
 
-const executeDomainDataCall = function *(method, action) {
+const executeDomainDataCall = function *(method, {domainName}) {
   yield put(actions.showLoader());
   try {
-    const response = yield call(() => method(action.domainName));
+    const response = yield call(() => method(domainName));
   } catch (e) {
     // trigger popup action
   }
