@@ -19,19 +19,19 @@ const executeDomainDataCall = function *(method, {domainName}) {
 };
 
 const getDomainData = function* (action) {
-  yield executeDomainDataCall(DomainServerApi.getDomainData, action);
+  yield* executeDomainDataCall(DomainServerApi.getDomainData, action);
 };
 
 const getDomainTransferData = function* (action) {
-  yield executeDomainDataCall(DomainServerApi.getDomainTransferData, action);
+  yield* executeDomainDataCall(DomainServerApi.getDomainTransferData, action);
 };
 
 const getRegistryCheckData = function* (action) {
-  yield executeDomainDataCall(DomainServerApi.getRegistryCheckData, action);
+  yield* executeDomainDataCall(DomainServerApi.getRegistryCheckData, action);
 };
 
 const getPremiumDomainData = function* (action) {
-  yield executeDomainDataCall(DomainServerApi.getPremiumDomainData, action);
+  yield* executeDomainDataCall(DomainServerApi.getPremiumDomainData, action);
 };
 
 // ============================================================================
@@ -50,6 +50,7 @@ const waitForGetPremiumDomainData = waiter(ActionTypes.GET_PREMIUM_DOMAIN_DATA, 
 // ============================================================================
 // DEFAULT SAGA EXPORT
 // ============================================================================
+
 
 export default function* domainRootSage() {
   yield [
