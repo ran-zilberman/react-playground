@@ -6,7 +6,11 @@ module.exports = function (config) {
     singleRun: true, //just run once by default
     frameworks: [ 'jasmine' ], //use the jasmine test framework
     files: [
-      'test/**/*.js'
+      'test/**/*.js',
+      './node_modules/phantomjs-polyfill-object-assign/object-assign-polyfill.js',
+      './node_modules/es6-promise/dist/es6-promise.js',
+      './node_modules/promise-polyfill/promise.js',
+      './node_modules/babel-polyfill/dist/polyfill.min.js'
     ],
     plugins: ['karma-phantomjs-launcher', 'karma-sourcemap-loader', 'karma-jasmine', 'karma-webpack'],
     preprocessors: {
@@ -18,7 +22,7 @@ module.exports = function (config) {
       module: {
         noParse: /node_modules\/json-schema\/lib\/validate\.js/,
         loaders: [
-          {test: /\.json$/, loaders:['json-loader'] },
+          { test: /\.json$/, loaders:['json-loader'] },
           { test: /\.jsx?$/, loader: 'babel', exclude: /node_modules/ }
         ]
       },

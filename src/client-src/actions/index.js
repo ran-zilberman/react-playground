@@ -2,6 +2,6 @@
  * Created by Ran_Zilberman on 17/05/2016.
  */
 
-import CreateModelDlg from './CreateModelDlg.js';
+import BoDomainServicesPane from './bo-domain-services-pane';
 
-export default {CreateModelDlg};
+export default { BoDomainServicesPane };

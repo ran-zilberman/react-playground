@@ -2,11 +2,15 @@
  * Created by Ran_Zilberman on 16/05/2016.
  */
 
-import {watchCreateFinancialModel} from './FinancialModel.js'
+import domainSaga from './domain-saga'
 
-export default function* rootSaga() {
-  yield [
-    //helloSaga(),
-    watchCreateFinancialModel()
-  ]
-}
+const sagas = [
+  domainSaga
+];
+
+const createRootSaga = function*() {
+  yield sagas.map(saga => saga());
+};
+
+export default createRootSaga;
+

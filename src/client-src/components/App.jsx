@@ -1,10 +1,10 @@
 import React from 'react'
-import CreateModelDlgContainer from '../containers/CreateModelDlgContainer'
+import BoDomainServicesPaneContainer from '../containers/bo-domain-services-pane-container'
 require('./index.scss');
 
 
 const App = () => (
-  <CreateModelDlgContainer/>
+  <BoDomainServicesPaneContainer/>
 );
 
 export default App;
