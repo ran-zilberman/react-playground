@@ -23,12 +23,12 @@ describe('BO Domain Saga', () => {
   });
 
   const testSaga = (actionFunc, actionType, isFailure) => {
-    sagaIntegrationTester.start(domainSaga).withAction(actionFunc(""));
-    testExecutionNumber(actionType, isFailure);
-    testExecutionOrder(actionType, isFailure);
+    sagaIntegrationTester.start(domainSaga).withAction(actionFunc("myStunningDomain.com"));
+    assertSideEffectCalled(actionType, isFailure);
+    assertSideEffectExecutionOrder(actionType, isFailure);
   };
 
-  const testExecutionOrder = (actionType, isFailure) => {
+  const assertSideEffectExecutionOrder = (actionType, isFailure) => {
     expectExecutionOrder(actionType, 0);
     expectExecutionOrder(actionTypes.SHOW_LOADER, 1);
     if (!isFailure) {
@@ -39,7 +39,7 @@ describe('BO Domain Saga', () => {
     }
   };
 
-  const testExecutionNumber = (actionType, isFailure) => {
+  const assertSideEffectCalled = (actionType, isFailure) => {
     expectExecutionsNumber(actionTypes.SHOW_LOADER, 1);
     expectExecutionsNumber(actionType, 1);
     expectExecutionsNumber(actionTypes.CLOSE_LOADER, 1);
