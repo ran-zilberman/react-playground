@@ -1,10 +1,9 @@
 import React from 'react'
-import CreateModelDlgContainer from '../containers/CreateModelDlgContainer'
 require('./index.scss');
 
 
 const App = () => (
-  <CreateModelDlgContainer/>
+  <div>Yo</div>
 );
 
 export default App;

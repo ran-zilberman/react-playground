@@ -41,26 +41,8 @@ app.get('/',  (req, res) => {
 });
 
 
-app.post('/saveFinancialModel', (req, res) => {
-  console.log('Server API: saveFinancialModel');
+app.post('/doSomething', (req, res) => {
+  console.log('Server API: doSomething');
   console.log(req.body);
   res.end();
-});
-
-
-app.get('/getStockHistoricalData', (req, res) => {
-  console.log('Server API: getStockHistoricalData');
-  res.header("Access-Control-Allow-Credentials", true);
-
-  yahooFinance.historical({
-    symbol: 'WIX',
-    from: '2015-01-01',
-    to: '2015-12-31'
-    // period: 'd'  // 'd' (daily), 'w' (weekly), 'm' (monthly), 'v' (dividends only)
-  }, (err, quotes) => {
-    if (err) {
-      throw new Error('Failed to fetch data from provider: ' + err);
-    }
-    res.json(quotes);
-  });
 });
