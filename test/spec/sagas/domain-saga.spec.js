@@ -9,71 +9,100 @@ describe('BO Domain Saga', () => {
   let sagaIntegrationTester = null;
 
   const boDomainServicesReducer = (state, action) => {
-    if (action.type ===  ActionTypes.SHOW_LOADER){
+    if (action.type ===  actionTypes.SHOW_LOADER){
       return {loader: true};
+    } else if (action.type == actionTypes.CLOSE_LOADER) {
+      return {loader: false};
     }
-    return {loader: false};
+    return state || {loader: null};
+
   };
 
   beforeEach(() => {
-    sagaIntegrationTester = new SagaIntegrationTester({}, 'boDomainServicesReducer', {boDomainServicesReducer: boDomainServicesReducer});
+    sagaIntegrationTester = new SagaIntegrationTester({}, {boDomainServicesReducer: boDomainServicesReducer});
   });
 
-  let testSaga = (action, actionType) => {
-    sagaIntegrationTester.start(domainSaga).withAction(actions[action]("domainName"));
-    expect(sagaIntegrationTester.numCalled(actionTypes.SHOW_LOADER)).toEqual(1);
-    expect(sagaIntegrationTester.numCalled(actionType)).toEqual(1);
-    expect(sagaIntegrationTester.numCalled(actionTypes.CLOSE_LOADER)).toEqual(1);
-    expect(sagaIntegrationTester.getActionExecutionOrder(actionType)).toEqual(0);
-    expect(sagaIntegrationTester.getActionExecutionOrder(actionTypes.SHOW_LOADER)).toEqual(1);
-    expect(sagaIntegrationTester.getActionExecutionOrder(actionTypes.CLOSE_LOADER)).toEqual(2);
+  const testSaga = (actionFunc, actionType, isFailure) => {
+    sagaIntegrationTester.start(domainSaga).withAction(actionFunc(""));
+    testExecutionNumber(actionType, isFailure);
+    testExecutionOrder(actionType, isFailure);
+  };
+
+  const testExecutionOrder = (actionType, isFailure) => {
+    expectExecutionOrder(actionType, 0);
+    expectExecutionOrder(actionTypes.SHOW_LOADER, 1);
+    if (!isFailure) {
+      expectExecutionOrder(actionTypes.GOT_DATA_FROM_SERVER, 2);
+      expectExecutionOrder(actionTypes.CLOSE_LOADER, 3);
+    } else {
+      expectExecutionOrder(actionTypes.CLOSE_LOADER, 2);
+    }
+  };
+
+  const testExecutionNumber = (actionType, isFailure) => {
+    expectExecutionsNumber(actionTypes.SHOW_LOADER, 1);
+    expectExecutionsNumber(actionType, 1);
+    expectExecutionsNumber(actionTypes.CLOSE_LOADER, 1);
+    if (!isFailure) {
+      expectExecutionsNumber(actionTypes.GOT_DATA_FROM_SERVER, 1);
+    } else {
+      expectExecutionsNumber(actionTypes.CLOSE_LOADER, 1);
+    }
+  };
+
+  const expectExecutionOrder = (actionType, order) => {
+    expect(sagaIntegrationTester.getActionExecutionOrder(actionType)).toEqual(order);
+  };
+
+  const expectExecutionsNumber = (actionType, executionNumber) => {
+    expect(sagaIntegrationTester.numCalled(actionType)).toEqual(executionNumber);
   };
 
   describe(`'GET_DOMAIN_DATA' handler`, () => {
     it('return domain data while showing loader upon waiting for response ', () => {
       spyOn(DomainServerApi, 'getDomainData').and.returnValue({});
-      testSaga('getDomainData', actionTypes.GET_DOMAIN_DATA);
+      testSaga(actions.getDomainData, actionTypes.GET_DOMAIN_DATA);
     });
 
     it('close loader upon failure', () => {
       spyOn(DomainServerApi, 'getDomainData').and.callFake(function() { throw new Error() });
-      testSaga('getDomainData', actionTypes.GET_DOMAIN_DATA);
+      testSaga(actions.getDomainData, actionTypes.GET_DOMAIN_DATA, true);
     });
   });
 
   describe(`'GET_TRANSFER_DOMAIN_DATA' handler`, () => {
     it('return transfer domain data while showing loader upon waiting for response ', () => {
       spyOn(DomainServerApi, 'getDomainTransferData').and.returnValue({});
-      testSaga('getDomainTransferData', actionTypes.GET_TRANSFER_DOMAIN_DATA);
+      testSaga(actions.getDomainTransferData, actionTypes.GET_TRANSFER_DOMAIN_DATA);
     });
 
     it('close loader upon failure', () => {
       spyOn(DomainServerApi, 'getDomainTransferData').and.callFake(function() { throw new Error() });
-      testSaga('getDomainTransferData', actionTypes.GET_TRANSFER_DOMAIN_DATA);
+      testSaga(actions.getDomainTransferData, actionTypes.GET_TRANSFER_DOMAIN_DATA, true);
     });
   });
 
   describe(`'GET_DOMAIN_REGISTRY_DATA' handler`, () => {
     it('return domain registry data while showing loader upon waiting for response ', () => {
       spyOn(DomainServerApi, 'getRegistryCheckData').and.returnValue({});
-      testSaga('getDomainRegistryCheckData', actionTypes.GET_DOMAIN_REGISTRY_DATA);
+      testSaga(actions.getDomainRegistryCheckData, actionTypes.GET_DOMAIN_REGISTRY_DATA);
     });
 
     it('close loader upon failure', () => {
       spyOn(DomainServerApi, 'getRegistryCheckData').and.callFake(function() { throw new Error() });
-      testSaga('getDomainRegistryCheckData', actionTypes.GET_DOMAIN_REGISTRY_DATA);
+      testSaga(actions.getDomainRegistryCheckData, actionTypes.GET_DOMAIN_REGISTRY_DATA, true);
     });
   });
 
   describe(`'GET_PREMIUM_DOMAIN_DATA' handler`, () => {
     it('return domain premium data while showing loader upon waiting for response ', () => {
       spyOn(DomainServerApi, 'getPremiumDomainData').and.returnValue({});
-      testSaga('getPremiumDomainData', actionTypes.GET_PREMIUM_DOMAIN_DATA);
+      testSaga(actions.getPremiumDomainData, actionTypes.GET_PREMIUM_DOMAIN_DATA);
     });
 
     it('close loader upon failure', () => {
       spyOn(DomainServerApi, 'getPremiumDomainData').and.callFake(function() { throw new Error() });
-      testSaga('getPremiumDomainData', actionTypes.GET_PREMIUM_DOMAIN_DATA);
+      testSaga(actions.getPremiumDomainData, actionTypes.GET_PREMIUM_DOMAIN_DATA, true);
     });
   });
 });

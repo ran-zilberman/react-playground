@@ -4,17 +4,15 @@ import createSagaMiddleware from 'redux-saga';
 const SAGA_INTEGRATION_TESTER_RESET_ACTION = 'SAGA_INTEGRATION_TESTER_RESET';
 
 export default class SagaIntegrationTester {
-  constructor(initialState, mainReducerName, reducers) {
+  constructor(initialState, reducers) {
     this.initialState = initialState || {};
     this.actions = {};
     this.actionsCalled = {};
     this.actions[SAGA_INTEGRATION_TESTER_RESET_ACTION] = (() => null);
     this.actionsCalledList = [];
     this.store = null;
-    this.mainReducerName = mainReducerName || 'test';
     this.reducers = reducers || {};
-
-    this.reducer = (state, action) => {
+    this.reducers.mainReducer = (state, action) => {
       let newState = null;
 
       if (action.type.indexOf('@@redux') !== 0) {      // Don't monitor redux actions
@@ -62,7 +60,7 @@ export default class SagaIntegrationTester {
 
   start(sagas) {
     const sagaMiddleware = createSagaMiddleware();
-    this.store = createStore(combineReducers({...this.reducers, i18n: this.i18nReducer, [this.mainReducerName]: this.reducer}), applyMiddleware(sagaMiddleware));
+    this.store = createStore(combineReducers({...this.reducers, i18n: this.i18nReducer}), applyMiddleware(sagaMiddleware));
     sagaMiddleware.run(sagas);
 
     const ret = {
@@ -94,8 +92,8 @@ export default class SagaIntegrationTester {
     return actionCallsOrder[0];
   }
 
-  getState() {
-    return this.store.getState()[this.mainReducerName];
+  getState(reducer) {
+    return this.store.getState()[reducer];
   }
 
   getRootState() {
