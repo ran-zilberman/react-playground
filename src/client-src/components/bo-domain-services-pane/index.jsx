@@ -1,4 +1,6 @@
 import React, { PropTypes, Component } from 'react';
+import UI from 'wix-base-ui/dist/base-ui';
+require('./index.scss');
 
 class BoDomainServicesPane extends Component {
 
@@ -12,11 +14,13 @@ class BoDomainServicesPane extends Component {
 
   render() {
     return (<div>
-      <input ref="domainName" />
-      <button className="domain-get-button" onClick={ this._onDomainGetClick }>Domain Get</button>
-      <button className="domain-transfer-get-button" onClick={ this._onDomainTransferGetClick }>Domain Transfer Get</button>
-      <button className="registry-check-button" onClick={ this._onRegistryCheckClick }>Domain Registry Check</button>
-      <button className="premium-domain-data-button" onClick={ this._onPremiumDomainDataClick }>Premium domain data</button>
+      <div className="actions-wrapper">
+        <input ref="domainName" className="domain-name-input"/>
+        <UI.button className="domain-get-button" onClick={ this._onDomainGetClick }>Domain Get</UI.button>
+        <UI.button className="domain-transfer-get-button" onClick={ this._onDomainTransferGetClick }>Domain Transfer Get</UI.button>
+        <UI.button className="registry-check-button" onClick={ this._onRegistryCheckClick }>Domain Registry Check</UI.button>
+        <UI.button className="premium-domain-data-button" onClick={ this._onPremiumDomainDataClick }>Premium domain data</UI.button>
+      </div>
     </div>);
   }
 

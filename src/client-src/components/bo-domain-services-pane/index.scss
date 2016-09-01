@@ -1,3 +1,22 @@
-.home1 {
-  padding: 3px;
+.actions-wrapper {
+  height: 32px;
+  position: relative;
+
+  .domain-get-button,
+  .domain-transfer-get-button,
+  .registry-check-button,
+  .premium-domain-data-button {
+    margin-left: 20px;
+    height: 100%;
+  }
+
+  .domain-name-input {
+    width: 120px;
+    height: 100%;
+    padding-left: 10px;
+    box-sizing: border-box;
+  }
+
 }
+
+

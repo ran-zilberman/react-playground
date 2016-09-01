@@ -1,3 +1,5 @@
-.some-namescpace {
+.bo-domain-services {
   @import "bo-domain-services-pane/index";
+  @import "../../../node_modules/wix-base-ui/src/controls/button";
+  @import "../../../node_modules/wix-base-ui/src/controls/textInput";
 }

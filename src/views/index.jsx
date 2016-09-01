@@ -13,7 +13,7 @@ return (
   <link rel="stylesheet" type="text/css" href={ styleScript } />
 </head>
 <body>
-<div id="app"></div>
+<div id="app" className="bo-domain-services"></div>
 <script src={bundleScript} ></script>
 </body>
 </html>
