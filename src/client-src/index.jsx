@@ -8,7 +8,9 @@ import rootSaga from './sagas';
 const store = configureStore();
 store.runSaga(rootSaga);
 
-render(<Provider store={store}>
-          <App/>
-      </Provider>, document.getElementById('app'));
+render(
+    <Provider store={store}>
+      <App/>
+    </Provider>, document.getElementById('app')
+);
 

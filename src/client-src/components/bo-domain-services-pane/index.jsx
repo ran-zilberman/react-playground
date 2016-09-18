@@ -1,6 +1,6 @@
 import React, { PropTypes, Component } from 'react';
 import UI from 'wix-base-ui/dist/base-ui';
-require('./index.scss');
+import JSONInspector from 'react-json-inspector';
 
 class BoDomainServicesPane extends Component {
 
@@ -12,16 +12,24 @@ class BoDomainServicesPane extends Component {
     this._onPremiumDomainDataClick = this._onPremiumDomainDataClick.bind(this);
   }
 
-  render() {
-    return (<div>
-      <div className="actions-wrapper">
-        <input ref="domainName" className="domain-name-input"/>
-        <UI.button className="domain-get-button" onClick={ this._onDomainGetClick }>Domain Get</UI.button>
-        <UI.button className="domain-transfer-get-button" onClick={ this._onDomainTransferGetClick }>Domain Transfer Get</UI.button>
-        <UI.button className="registry-check-button" onClick={ this._onRegistryCheckClick }>Domain Registry Check</UI.button>
-        <UI.button className="premium-domain-data-button" onClick={ this._onPremiumDomainDataClick }>Premium domain data</UI.button>
-      </div>
-    </div>);
+render() {
+  const { jsonData } = this.props;
+  return (
+        <div>
+          <div className="actions-wrapper">
+            <input ref="domainName" className="domain-name-input"/>
+            <UI.button className="domain-get-button" onClick={ this._onDomainGetClick }>Domain Get</UI.button>
+            <UI.button className="domain-transfer-get-button" onClick={ this._onDomainTransferGetClick }>Domain Transfer Get</UI.button>
+            <UI.button className="registry-check-button" onClick={ this._onRegistryCheckClick }>Domain Registry Check</UI.button>
+            <UI.button className="premium-domain-data-button" onClick={ this._onPremiumDomainDataClick }>Premium domain data</UI.button>
+          </div>
+          {
+            jsonData ?
+              <JSONInspector data={jsonData}  filterOptions={{ignoreCase: true}} /> :
+              <div className="no-json-data">No data</div>
+          }
+        </div>
+    );
   }
 
   _onDomainGetClick() {

@@ -10,6 +10,7 @@ var config = {
   devtool: 'source-map',
   entry: [
     'babel-polyfill',
+    'isomorphic-fetch',
     SRC_DIR + '/index.jsx'
   ],
   output: {
@@ -38,7 +39,7 @@ var config = {
         loader: "file?name=[name].[ext]"
       },
       {
-        test: /\.scss$/,
+        test: /\.s?css$/,
         loader: ExtractTextPlugin.extract('css!sass')
       }
     ]

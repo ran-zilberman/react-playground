@@ -13,7 +13,7 @@ describe('Actions: bo-domain-services-pane', function () {
       type:ActionTypes.GET_DOMAIN_DATA,
       domainName
     };
-    expect(BoDomainServicesPaneActions.getDomainData({domainName})).toEqual(expectedAction);
+    expect(BoDomainServicesPaneActions.getDomainData(domainName)).toEqual(expectedAction);
   });
 
   it('should return GET_TRANSFER_DOMAIN_DATA action object', function () {
@@ -22,7 +22,7 @@ describe('Actions: bo-domain-services-pane', function () {
       type:ActionTypes.GET_TRANSFER_DOMAIN_DATA,
       domainName
     };
-    expect(BoDomainServicesPaneActions.getDomainTransferData({domainName})).toEqual(expectedAction);
+    expect(BoDomainServicesPaneActions.getDomainTransferData(domainName)).toEqual(expectedAction);
   });
 
   it('should return GET_DOMAIN_REGISTRY_DATA action object', function () {
@@ -31,7 +31,7 @@ describe('Actions: bo-domain-services-pane', function () {
       type:ActionTypes.GET_DOMAIN_REGISTRY_DATA,
       domainName
     };
-    expect(BoDomainServicesPaneActions.getDomainRegistryCheckData({domainName})).toEqual(expectedAction);
+    expect(BoDomainServicesPaneActions.getDomainRegistryCheckData(domainName)).toEqual(expectedAction);
   });
 
   it('should return GET_PREMIUM_DOMAIN_DATA action object', function () {
@@ -40,7 +40,7 @@ describe('Actions: bo-domain-services-pane', function () {
       type:ActionTypes.GET_PREMIUM_DOMAIN_DATA,
       domainName
     };
-    expect(BoDomainServicesPaneActions.getPremiumDomainData({domainName})).toEqual(expectedAction);
+    expect(BoDomainServicesPaneActions.getPremiumDomainData(domainName)).toEqual(expectedAction);
   });
 
   it('should return SHOW_LOADER action object', function () {
