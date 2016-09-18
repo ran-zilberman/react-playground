@@ -38,7 +38,7 @@ var config = {
         loader: "file?name=[name].[ext]"
       },
       {
-        test: /\.scss$/,
+        test: /\.s?css$/,
         loader: ExtractTextPlugin.extract('css!sass')
       }
     ]

@@ -51,7 +51,7 @@ const getReadableData = createSelector([getData], (data) => {
 
 const mapStateToProps = (state) => {
   return {
-    loader: state.BoDomainServicesPane.loader,
+    isLoading: state.BoDomainServicesPane.isLoading,
     jsonTree: getReadableData(state)
   }
 };
