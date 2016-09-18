@@ -23,4 +23,9 @@ describe('Reducers: bo-domain-services-pane', function () {
     expect(reducer({loader: true}, BoDomainServicesPaneActions.closeLoader())).toEqual({});
   });
 
+  it(`should return the state with jsonTree when CLOSE_LOADER action is triggered and state's loader flag is not present`, () => {
+    const response = {someData: 'some-data'};
+    expect(reducer(undefined, BoDomainServicesPaneActions.gotDataFromServer({response}))).toEqual({jsonTree: response});
+  });
+
 });

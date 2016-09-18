@@ -52,7 +52,7 @@ describe('DomainServicesApi', () => {
 
     it('should return json representation when response content type is xml', async (done) => {
       fetchMock.post(ServerUri.GET_DOMAIN_DATA, responseParams(ContentType.XML_CONTENT_TYPE, dummyResultXmlObject()) );
-      assertApiSuccess(DomainServerApi.getDomainData, dummyXmlJsonRep());
+      await assertApiSuccess(DomainServerApi.getDomainData, dummyXmlJsonRep());
       done();
     });
 
@@ -67,7 +67,7 @@ describe('DomainServicesApi', () => {
 
     it('should return domain data', async done => {
       fetchMock.post(ServerUri.GET_DOMAIN_DATA, responseParams(ContentType.XML_CONTENT_TYPE, dummyResultXmlObject()) );
-      assertApiSuccess(DomainServerApi.getDomainData, dummyXmlJsonRep());
+      await assertApiSuccess(DomainServerApi.getDomainData, dummyXmlJsonRep());
       done();
     });
 
@@ -81,7 +81,7 @@ describe('DomainServicesApi', () => {
 
     it('should return domain transfer data', async done => {
       fetchMock.post(ServerUri.GET_DOMAIN_TRANSFER_DATA, responseParams(ContentType.XML_CONTENT_TYPE, dummyResultXmlObject()) );
-      assertApiSuccess(DomainServerApi.getDomainTransferData, dummyXmlJsonRep());
+      await assertApiSuccess(DomainServerApi.getDomainTransferData, dummyXmlJsonRep());
       done();
     });
 
@@ -95,7 +95,7 @@ describe('DomainServicesApi', () => {
 
     it('should return domain registry data', async done => {
       fetchMock.post(ServerUri.GET_DOMAIN_REGISTRY_CHECK, responseParams(ContentType.XML_CONTENT_TYPE, dummyResultXmlObject()) );
-      assertApiSuccess(DomainServerApi.getRegistryCheckData, dummyXmlJsonRep());
+      await assertApiSuccess(DomainServerApi.getRegistryCheckData, dummyXmlJsonRep());
       done();
     });
 
@@ -109,7 +109,7 @@ describe('DomainServicesApi', () => {
 
     it('should return premium domain data', async done => {
       fetchMock.post(ServerUri.GET_PREMIUM_DOMAIN_DATA, responseParams(ContentType.JSON_CONTENT_TYPE, dummyResultJsonObject()) );
-      assertApiSuccess(DomainServerApi.getPremiumDomainData, dummyResultJsonObject());
+      await assertApiSuccess(DomainServerApi.getPremiumDomainData, dummyResultJsonObject());
       done();
     });
 

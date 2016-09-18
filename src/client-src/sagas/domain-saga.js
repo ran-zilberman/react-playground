@@ -12,7 +12,7 @@ const executeDomainDataCall = function *(method, {domainName}) {
   yield put(actions.showLoader());
   try {
     const response = yield call(() => method(domainName));
-    yield put(actions.gotDataFromServer(response));
+    yield put(actions.gotDataFromServer({response}));
   } catch (e) {
     // trigger popup action
   }

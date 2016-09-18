@@ -15,6 +15,7 @@ describe('<BoDomainServicesPane/>', ()=> {
   const getDomainTransferDataClassName = '.domain-transfer-get-button';
   const getDomainRegistryCheckDataClassName = '.registry-check-button';
   const getPremiumDomainDataClassName = '.premium-domain-data-button';
+  const jsonResultContainerClassName = '.json-result-container';
 
   beforeEach(() => {
     props = {
@@ -23,7 +24,6 @@ describe('<BoDomainServicesPane/>', ()=> {
       onRegistryCheckClick: jasmine.createSpy(),
       onPremiumDomainDataClick: jasmine.createSpy()
     };
-    wrapper = mount(<BoDomainServicesPane {...props}/>);
   });
 
   const simulateClickAndAssertCallback = (callbackSpy, buttonClass) => {
@@ -32,19 +32,34 @@ describe('<BoDomainServicesPane/>', ()=> {
   };
 
   it(`should trigger onDomainGetClick callback upon 'getDomainData' button click`, function () {
+    wrapper = mount(<BoDomainServicesPane {...props}/>);
     simulateClickAndAssertCallback(props.onDomainGetClick, getDomainDataClassName);
   });
 
   it(`should trigger onDomainTransferGetClick callback upon 'getDomainTransferData' button click`, function () {
+    wrapper = mount(<BoDomainServicesPane {...props}/>);
     simulateClickAndAssertCallback(props.onDomainTransferGetClick, getDomainTransferDataClassName);
   });
 
   it(`should trigger onRegistryCheckClick callback upon 'getDomainRegistryCheck' button click`, function () {
+    wrapper = mount(<BoDomainServicesPane {...props}/>);
     simulateClickAndAssertCallback(props.onRegistryCheckClick, getDomainRegistryCheckDataClassName);
   });
 
   it(`should trigger onPremiumDomainDataClick callback upon 'getPremiumDomainData' button click`, function () {
+    wrapper = mount(<BoDomainServicesPane {...props}/>);
     simulateClickAndAssertCallback(props.onPremiumDomainDataClick, getPremiumDomainDataClassName);
+  });
+
+  it(`should show the json tree when data exist`, function () {
+    props.jsonTree = {jsonItem: 'json-item'};
+    wrapper = mount(<BoDomainServicesPane {...props}/>);
+    expect(wrapper.find(jsonResultContainerClassName).length).toBe(1);
+  });
+
+  it(`should not show the json tree when data does not exist`, function () {
+    wrapper = mount(<BoDomainServicesPane {...props}/>);
+    expect(wrapper.find(jsonResultContainerClassName).length).toBe(0);
   });
 
 

@@ -1,6 +1,8 @@
 import React, { PropTypes, Component } from 'react';
 import UI from 'wix-base-ui/dist/base-ui';
-require('./index.scss');
+import JSONInspector from 'react-json-inspector';
+
+const returnTrue = () => true;
 
 class BoDomainServicesPane extends Component {
 
@@ -13,7 +15,8 @@ class BoDomainServicesPane extends Component {
   }
 
   render() {
-    return (<div>
+    let { jsonTree } = this.props;
+    return (<div className="bo-domain-services-pane">
       <div className="actions-wrapper">
         <input ref="domainName" className="domain-name-input"/>
         <UI.button className="domain-get-button" onClick={ this._onDomainGetClick }>Domain Get</UI.button>
@@ -21,31 +24,32 @@ class BoDomainServicesPane extends Component {
         <UI.button className="registry-check-button" onClick={ this._onRegistryCheckClick }>Domain Registry Check</UI.button>
         <UI.button className="premium-domain-data-button" onClick={ this._onPremiumDomainDataClick }>Premium domain data</UI.button>
       </div>
+      {jsonTree ? <JSONInspector className="json-result-container" isExpanded={ returnTrue } data={jsonTree}  filterOptions={{ignoreCase: true}} /> : <div className="no-json-data">No data</div>}
     </div>);
   }
 
   _onDomainGetClick() {
     let {onDomainGetClick} = this.props;
     let domainName = this.refs.domainName.value;
-    onDomainGetClick(domainName);
+    onDomainGetClick({domainName});
   }
 
   _onDomainTransferGetClick() {
     let {onDomainTransferGetClick} = this.props;
     let domainName = this.refs.domainName.value;
-    onDomainTransferGetClick(domainName);
+    onDomainTransferGetClick({domainName});
   }
 
   _onRegistryCheckClick() {
     let {onRegistryCheckClick} = this.props;
     let domainName = this.refs.domainName.value;
-    onRegistryCheckClick(domainName);
+    onRegistryCheckClick({domainName});
   }
 
   _onPremiumDomainDataClick() {
     let {onPremiumDomainDataClick} = this.props;
     let domainName = this.refs.domainName.value;
-    onPremiumDomainDataClick(domainName);
+    onPremiumDomainDataClick({domainName});
   }
 
 }
@@ -56,7 +60,8 @@ BoDomainServicesPane.propTypes = {
   onDomainGetClick: PropTypes.func.isRequired,
   onDomainTransferGetClick: PropTypes.func.isRequired,
   onRegistryCheckClick: PropTypes.func.isRequired,
-  onPremiumDomainDataClick: PropTypes.func.isRequired
+  onPremiumDomainDataClick: PropTypes.func.isRequired,
+  jsonTree: PropTypes.object
 };
 
 

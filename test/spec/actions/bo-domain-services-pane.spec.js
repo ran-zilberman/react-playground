@@ -57,4 +57,13 @@ describe('Actions: bo-domain-services-pane', function () {
     expect(BoDomainServicesPaneActions.closeLoader()).toEqual(expectedAction);
   });
 
+  it('should return GOT_DATA_FROM_SERVER action object', function () {
+    const response = {data: 'my-data'};
+    const expectedAction = {
+      type: ActionTypes.GOT_DATA_FROM_SERVER,
+      response
+    };
+    expect(BoDomainServicesPaneActions.gotDataFromServer({response})).toEqual(expectedAction);
+  });
+
 });

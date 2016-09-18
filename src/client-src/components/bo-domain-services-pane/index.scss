@@ -1,20 +1,29 @@
-.actions-wrapper {
-  height: 32px;
-  position: relative;
+.bo-domain-services-pane {
 
-  .domain-get-button,
-  .domain-transfer-get-button,
-  .registry-check-button,
-  .premium-domain-data-button {
-    margin-left: 20px;
-    height: 100%;
+  min-width: 1000px;
+  .actions-wrapper {
+    height: 32px;
+    position: relative;
+
+    .domain-get-button,
+    .domain-transfer-get-button,
+    .registry-check-button,
+    .premium-domain-data-button {
+      margin-left: 20px;
+      height: 100%;
+    }
+
+    .domain-name-input {
+      width: 120px;
+      height: 100%;
+      padding-left: 10px;
+      box-sizing: border-box;
+    }
+
   }
 
-  .domain-name-input {
-    width: 120px;
-    height: 100%;
-    padding-left: 10px;
-    box-sizing: border-box;
+  .json-result-container {
+    margin-top: 40px;
   }
 
 }

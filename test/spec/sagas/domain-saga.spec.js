@@ -2,7 +2,7 @@ import domainSaga                  from '../../../src/client-src/sagas/domain-sa
 import actions                     from '../../../src/client-src/actions/bo-domain-services-pane';
 import actionTypes                 from '../../../src/client-src/constants/BoDomainServicesActionTypes';
 import DomainServerApi             from '../../../src/client-src/services/domain-server-api'
-import SagaIntegrationTester       from '../../../src/client-src/testHelper/SagaIntegrationTester.js';
+import SagaIntegrationTester       from '../../../src/client-src/test-utils/SagaIntegrationTester.js';
 
 describe('BO Domain Saga', () => {
 

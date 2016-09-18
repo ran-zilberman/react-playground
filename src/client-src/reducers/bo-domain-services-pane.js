@@ -7,15 +7,17 @@ export default function boDomainServicesPane(state = initialState, action) {
   switch (action.type) {
     case ActionTypes.SHOW_LOADER:
       newState.loader = true;
-      return newState;
+      break;
 
     case ActionTypes.CLOSE_LOADER:
       delete newState.loader;
-      return newState;
+      break;
 
-    default:
-      return state;
+    case ActionTypes.GOT_DATA_FROM_SERVER:
+      newState.jsonTree = action.response;
+      break;
   }
+  return newState;
 }
 
 
