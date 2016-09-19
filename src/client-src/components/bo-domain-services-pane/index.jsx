@@ -1,6 +1,7 @@
 import React, { PropTypes, Component } from 'react';
 import UI from 'wix-base-ui/dist/base-ui';
 import JSONInspector from 'react-json-inspector';
+require('./index.scss');
 
 const returnTrue = () => true;
 

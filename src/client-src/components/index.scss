@@ -1,6 +1,7 @@
-.bo-domain-services {
-  @import "bo-domain-services-pane/index";
+@import 'common';
+
+.bo-domain-services-app {
+  @import "../../../node_modules/react-json-inspector/json-inspector";
   @import "../../../node_modules/wix-base-ui/src/controls/button";
   @import "../../../node_modules/wix-base-ui/src/controls/textInput";
-  @import "../../../node_modules/react-json-inspector/json-inspector";
 }
