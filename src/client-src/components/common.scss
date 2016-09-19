@@ -1,6 +1,24 @@
 @import "../../../node_modules/wix-base-ui/src/framework/colors";
+@import "../../../node_modules/wix-base-ui/src/framework/fonts";
+@import "../../../node_modules/react-json-inspector/json-inspector";
+@import "../../../node_modules/wix-base-ui/src/controls/button";
+@import "../../../node_modules/wix-base-ui/src/controls/textInput";
 
 body {
   height: 100%;
   background-color: $g-color-b5x;
+}
+
+@keyframes animated-rtl-entrance {
+  0% { opacity: 0; transform: translateX(100%);}
+  100% { opacity: 1; }
+}
+
+@keyframes animated-fade-in {
+  0% { opacity: 0; }
+  100% { opacity: 1; }
+}
+
+* {
+  font-family: $g-font45;
 }

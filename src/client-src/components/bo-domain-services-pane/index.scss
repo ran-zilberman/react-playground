@@ -22,8 +22,13 @@
 
   }
 
-  .json-result-container {
+  .json-result-container,
+  .no-json-data {
     margin-top: 40px;
+  }
+
+  .json-result-container {
+    animation: animated-fade-in 1s;
   }
 
 }
