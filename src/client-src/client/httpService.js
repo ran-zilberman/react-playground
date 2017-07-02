@@ -6,4 +6,6 @@ class FetchService {
     fetch.apply(null, args);
   }
 }
+
+
 export default new FetchService();
